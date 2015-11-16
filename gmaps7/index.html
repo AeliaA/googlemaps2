@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Google Maps API</title>
+
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
+	
+	<script>
+	//for making the map circulate
+
+	var myCenter = new google.maps.LatLng(50.820074, -0.136355);	
+
+	function initialize()
+	{
+		var mapProp = {
+			center:myCenter,
+			zoom:18,
+		//for making the map circulate
+			mapTypeId:google.maps.MapTypeId.TERRAIN
+		};
+
+		var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+		//set further styling of map
+		var styles = [
+		{
+			stylers:[
+			{ hue:"#4c704c" },
+			{ saturation: -60 }
+			]
+		},{
+			featureType:"road",
+			elementType:"geometry",
+			stylers:[
+			{ lightness:10 },
+			{ visibility:"on" }
+			]
+		},{
+			featureType:"road",
+			elementType:"labels",
+			stylers:[
+			{visibility:"simplified"},
+			{color:"#f83e85"}
+			]
+		},{
+		    featureType: "poi.business",
+		    elementType: "geometry",
+		    stylers: [
+		      { visibility: "on" },
+		      {color:"#fc4e5b"}
+		    ]
+		},{
+		    featureType: "poi.business",
+		    elementType: "labels",
+		    stylers: [
+		      { visibility: "simplified" },
+		      {color:"#043f77"}
+		    ]
+		}
+		];
+
+		map.setOptions({styles: styles});
+	}
+	
+	google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+
+
+</head>
+<body>
+	<div id="googleMap" style="width:500px;height:380px;"></div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
